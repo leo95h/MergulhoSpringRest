@@ -1,0 +1,10 @@
+Aulas:
+ - Modulo 1:
+   - Fundamentos de REST
+   - Ecossistema Spring
+   - Criando o projeto Spring Boot
+   - Implementando Collection Resource
+   - Métodos e códigos de status HTTP
+   - Content Negotiation
+   - Estudo de caso: de Feirante a Especialista Spring REST
+   - Estudo de caso: contratado após o ERS   
