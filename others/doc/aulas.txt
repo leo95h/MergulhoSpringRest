@@ -7,4 +7,13 @@ Aulas:
    - Métodos e códigos de status HTTP
    - Content Negotiation
    - Estudo de caso: de Feirante a Especialista Spring REST
-   - Estudo de caso: contratado após o ERS   
+   - Estudo de caso: contratado após o ERS
+ 
+ - Modulo 2:
+   - Configurando o Flyway
+   - Usando Jakarta Persistence (JPA)
+   - Usando Spring Data JPA
+   - Implementando o CRUD de cliente
+   - Validando com Bean Validation
+   - Implementando Exception Handler
+   - Implementando Domain Services
