@@ -1,6 +1,6 @@
 package br.com.logistics.api.exceptionhandler;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import br.com.logistics.domain.exception.EntidadeNaoEncontradaException;
 import br.com.logistics.domain.exception.NegocioException;
 import lombok.AllArgsConstructor;
 
@@ -35,6 +36,16 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		var problema = createBodyProblem(status.value(),"Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente",campos);
 		
 		return handleExceptionInternal(ex, problema, headers, status, request);
+	}
+	
+	@ExceptionHandler(EntidadeNaoEncontradaException.class)
+	public ResponseEntity<Object> handleEntidadeNaoEncontrada(NegocioException ex, WebRequest request){
+		
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		
+		var problema = createBodyProblem(status.value(),ex.getMessage(),null);
+		
+		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
 	}
 	
 	@ExceptionHandler(NegocioException.class)
@@ -65,7 +76,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 		Problema problema = new Problema();
 		problema.setStatus(status);
-		problema.setDataHora(LocalDateTime.now());
+		problema.setDataHora(OffsetDateTime.now());
 		problema.setTitulo(titulo);
 		problema.setCampos(campos);
 		
